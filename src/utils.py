@@ -14,6 +14,10 @@ def load_data_to_db(employer_ids: list[str], db_name: str) -> None:
         try:
             print(f"🔍 Обработка работодателя ID: {employer_id}")
             employer_data: dict = hh_api.get_employer(employer_id)
+
+            if not employer_data:
+                continue
+
             db.save_employer(employer_data)
 
             vacancies: list[dict] = hh_api.get_all_vacancies(employer_id)

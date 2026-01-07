@@ -11,7 +11,7 @@ class HHAPI:
 
     def __init__(self, retries: int = 3, timeout: int = 30, request_delay: float = 0.2) -> None:
         self.session: requests.Session = requests.Session()
-        self.session.headers.update({"User-Agent": "HH-Parser/1.0 (you@example.com)"})
+        self.session.headers.update({"User-Agent": "HH-Parser/1.0 (maksym.krasovskiy@yandex.ru)"})
         self.retries: int = retries
         self.timeout: int = timeout
         self.request_delay: float = request_delay
@@ -45,7 +45,7 @@ class HHAPI:
 
     def get_employer(self, employer_id: str) -> dict[str, Any]:
         """Получение информации о работодателе по идентификатору."""
-        url: str = f"{self.BASE_URL}employers/{employer_id}"
+        url: str = f"https://api.hh.ru/employers/{employer_id}"
         return self._make_request(url)
 
     def get_vacancies(self, employer_id: str, page: int = 0, per_page: int = 100) -> dict[str, Any]:
